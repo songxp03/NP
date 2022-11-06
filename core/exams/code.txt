@@ -1,0 +1,62 @@
+import_map.json:
+
+`https://cdn.jsdelivr.net/npm/${pkg}${version}${path}`
+
+{
+  "imports": {
+    "three":"https://cdn.jsdelivr.net/npm/three@0.142.0/build/three.module.js",
+    "echarts":"https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.esm.min.js"
+  }
+}
+
+App.vue:
+
+<template>
+  <el-row class="mb-4">
+    <el-button>Default</el-button>
+    <canvas ref="myCanvas" width="300" height="300" />
+  </el-row>
+</template>
+
+<script lang="ts" setup>
+import {getCurrentInstance,onMounted,ref} from 'vue';
+
+import * as THREE from 'three';
+import * as echarts from 'echarts';
+  
+const { proxy } = getCurrentInstance();
+  
+const geometry = new THREE.BoxGeometry( 200, 200, 200 );
+const material = new THREE.MeshBasicMaterial();
+const mesh = new THREE.Mesh( geometry, material );  
+mesh.rotation.x=2.3;
+console.log(mesh.rotation.x);
+onMounted(()=>{
+  var dom =proxy.$refs.myCanvas;
+      var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+  var option = {
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [150, 230, 224, 218, 135, 147, 260],
+      type: 'line'
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+})
+
+  
+</script>

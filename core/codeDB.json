@@ -1,0 +1,125 @@
+[
+  {
+    "value": "GSG",
+    "label": "入门引导",
+    "children": 
+      [{
+        "value": "js",
+        "label": "基本js语法"
+      },{
+        "value": "mathJax",
+        "label": "数学公式"
+      },{
+        "value": "UI",
+        "label": "交互页面"
+      },{
+        "value": "mesh",
+        "label": "模型与网格"
+      },{
+        "value": "BC",
+        "label": "初始化与边界条件"
+      },{
+        "value": "iter",
+        "label": "迭代求解"
+      }, {
+        "value": "echarts",
+        "label": "残差控制及可视化"
+      }, {
+        "value": "all",
+        "label": "完整代码"
+      }]
+  }, 
+  {
+    "value": "heat",
+    "label": "传热学",
+    "children": 
+      [{
+        "value": "heat1D",
+        "label": "一维导热",
+        "children": [{
+          "value": "heat1D_static",
+          "label": "稳态"
+        }, {
+          "value": "heat1D_unsteady",
+          "label": "非稳态"
+        }, {
+          "value": "heat1D_flux",
+          "label": "对流边界条件"
+        }]
+  }, {
+      "value": "heat2D",
+      "label": "二维导热",
+      "children": 
+        [{
+          "value": "heat2D_steady",
+          "label": "稳态"
+        }, {
+          "value": "heat2D_unsteady",
+          "label": "非稳态"
+        }]
+    }, {
+      "value": "HeatEx",
+      "label": "换热器3D"
+    }, {
+      "value": "HVAC",
+      "label": "中央空调3D"
+    }
+    , {
+      "value": "Power",
+      "label": "发电设备3D"
+    }
+    , {
+      "value": "Engine",
+      "label": "航空发动机3D"
+    }
+    ]
+  }, {
+      "value": "fluid",
+      "label": "流体力学",
+      "children": 
+        [{
+          "value": "blasius",
+          "label": "边界层"
+        }, {
+          "value": "potential",
+          "label": "理想势流"
+        }, {
+          "value": "vortex",
+          "label": "涡量流函数"
+        }, {
+          "value": "LBM",
+          "label": "卡门涡街-LBM"
+        }]
+  }, {
+    "value": "engineering",
+    "label": "新工科",
+    "children": 
+      [{
+        "value": "VR",
+        "label": "虚拟现实"
+      }, {
+        "value": "iot",
+        "label": "物联网"
+      }, {
+        "value": "AI",
+        "label": "人工智能"
+      }]
+  }, {
+    "value": "algorithm",
+    "label": "算法示例",
+    "children": 
+      [{
+        "value": "calc",
+        "label": "公式计算"
+      }, {
+        "value": "PID",
+        "label": "PID控制"
+      },{
+        "value": "delaunay",
+        "label": "静态Delaunay"
+      }, {
+        "value": "delaunay2",
+        "label": "交互Delaunay"
+      }]
+  }
+]

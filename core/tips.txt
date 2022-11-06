@@ -1,0 +1,171 @@
+<script async src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+
+<template>
+  <el-row class="mb-4">
+    <div ref="mathCtx">
+      <p>N-S方程:
+        $$\frac{\partial \vec{u}}{\partial t} = -\vec{u} \cdot \nabla \vec{u} - \frac{1}{\rho}\nabla \rho + \nu \nabla^2\vec{u} + \vec{F}$$
+        连续性方程:
+        $$\nabla \cdot \vec{u} = 0$$
+        That's all!
+      </p>
+    </div>
+    <canvas ref="myCanvas" width="500" height="350" />
+  </el-row>
+  <el-row class="mb-4">
+    <canvas ref="errCanvas" width="500" height="300" />
+  </el-row>
+</template>
+
+<script lang="ts" setup>
+import {getCurrentInstance,onMounted,ref} from 'vue';
+const myCanvas=ref()
+const errCanvas=ref()
+const mathCtx=ref()
+
+onMounted(()=>{ 
+  MathJax.Hub
+let isMathjaxConfig = false;//用于标识是否配置
+const initMathjaxConfig = () => {
+  if (!window.MathJax) {
+    return;
+  }
+  window.MathJax.Hub.Config({
+    showProcessingMessages: false, //关闭js加载过程信息
+    messageStyle: "none", //不显示信息
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+      displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+      skipTags: ["script", "noscript", "style", "textarea", "pre"] //避开某些标签
+    },
+    "HTML-CSS": {
+      availableFonts: ["STIX", "TeX"], //可选字体
+      showMathMenu: false //关闭右击菜单显示
+    }
+  });
+  isMathjaxConfig = true; //配置完成，改为true
+};
+const MathQueue = function(elem) {
+  if (!window.MathJax) {
+    return;
+  }
+  window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, elem]);//这里可以用原生的js调用name,class,id。
+};
+  
+      if (!isMathjaxConfig) { // 判断是否初始配置，若无则配置。
+         initMathjaxConfig()
+      }
+      MathQueue(mathCtx.value)// 传入组件id，让组件被MathJax渲染
+  
+  var myChart = echarts.init(myCanvas.value);
+  
+	var errChart = echarts.init(errCanvas.value);
+  
+  var tmpr = [], iters = [], errors = [],xs=[],ys=[],maxIter=100;
+
+  Array.create = function (dimension, initialValue) {
+  var arr = [];
+  for (var i = 0; i < dimension; i++) {
+    arr[i] = initialValue;
+  }
+  return arr;
+};
+
+var Solution = function (tmpr) {
+  this.tmpr = tmpr;
+
+  this.SetUpGeometryAndMesh = SetUpGeometryAndMesh;
+  this.SetUpBoundaryCondition = SetUpBoundaryCondition;
+  this.Solve = Solve;
+};
+
+function SetUpGeometryAndMesh(dx, dy) {
+  for (var i = 0; i < 50 + 1; i++) {
+    tmpr[i] = Array.create(30 + 1, 0);
+  }
+}
+
+function SetUpBoundaryCondition(dx, dy,Tr) {
+  for (var j = 0; j < 30 + 1; j++) {
+    tmpr[0][j] = 0.05 * j * (30.0 - j);//左侧
+    tmpr[50][j] = Tr;//右侧
+  }
+
+  for (var i = 0; i < 50 + 1; i++) {//
+    tmpr[i][0] = 10 * Math.sin(Math.PI * i / 50.0)
+    tmpr[i][30] = 0;//
+  }
+}
+
+function Solve() {
+  var err, iter = 0, tmp, N = 51 * 31/*节点总数*/;
+  do {
+    err = 0/*误差*/, maxIter = 1000/*最大迭代次数*/;
+    for (var i = 1; i < 50; i++) {
+      for (var j = 1; j < 30; j++) {
+        tmp = 0.25 * (tmpr[i + 1][j] + tmpr[i - 1][j] + tmpr[i][j + 1] + tmpr[i][j - 1]);
+        err += (tmp - tmpr[i][j]) * (tmp - tmpr[i][j]);
+        tmpr[i][j] = tmp;
+      }
+    }
+    iter++;//迭代次数
+    err = Math.sqrt(err / N);
+    errors.push(err); iters.push(iter)
+  } while (err > 1E-4)
+  console.info('最终误差：', err,iter);
+}
+
+function Calc2D(Tr,solveIt){
+  var solution = new Solution(tmpr);
+  var dx = 0.1; var dy = 0.1;//本特例网格dx与dy必须一致
+  solution.SetUpGeometryAndMesh(dx, dy);//网格
+  solution.SetUpBoundaryCondition(dx, dy,Tr);//设置边界条件
+  if (solveIt) solution.Solve();//求解
+
+  var results = [];
+  [xs,ys]=[[],[]];
+  for (var j = 0; j < 30 + 1; j++) {
+    ys.push(j);
+    for (var i = 0; i < 50 + 1; i++) {
+      var arr = [i, j, tmpr[i][j]];
+      results.push(arr);
+      if(j==0) ys.push(i);
+    }
+  }
+  return results;
+}
+  
+  const data = Calc2D(0,true);
+
+  const option = {
+    title: {text: '温度云图'},//图标题
+    tooltip: {},animation: false,
+    xAxis: {type: 'category',xs},
+    yAxis: {type: 'category',ys},
+    grid: {containLabel: true},
+    visualMap: {
+      min: 0,max: 10,calculable: true,orient: 'horizontal',left: 'center',bottom: 10,
+      inRange: { color: ['#0000FF', '#0065FF', '#00CBFF', '#00FFCB', '#00FF65', '#00FF00', '#65FF00', '#CBFF00', '#FFCB00', '#FF6500', '#FF0000'],}
+    },
+    series: [{name: '温度/°C',type: 'heatmap',data: data,
+      itemStyle: {emphasis: {shadowBlur: 10,shadowColor: 'rgba(0, 0, 0, 0.5)'}}
+    }]
+  };
+
+  myChart.setOption(option);
+  
+  //绘制残差
+	var errOption = {
+      title: {text: '残差变化趋势'},//图标题
+      tooltip: {trigger: 'axis'},//提示信息
+      xAxis: {type: 'category',data: iters,},yAxis: {type: 'value'},//x坐标和y坐标
+      series: [{name:'残差',data: errors,type: 'line'},],
+      legend: {data:['残差',]},//图例文字
+      toolbox: {feature: {saveAsImage: {}}}//设置保存图片按钮
+    };
+  errChart.setOption(errOption);
+})
+  
+</script>
