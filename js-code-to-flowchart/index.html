@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Live code editor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/codemirror.min.css">
+        <link rel="stylesheet" href="css/elegant.css">
+
+        <script src="js/codemirror.min.js"></script>
+        <script src="js/javascript.js"></script>
+        <script src="js/lodash.min.js"></script>
+        <script src="js/FileSaver.min.js"></script>
+
+
+        <style>
+
+            .container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .column {
+                flex: 1;
+                border-left: 1px solid #ccc;
+            }
+
+            #svgImage {
+                background: white;
+                margin: 0;
+                overflow: auto;
+            }
+
+            #downloadFile {
+                position: fixed;
+                right: 20px;
+                top: 15px;
+                padding: 5px 10px;
+                background: white;
+                border: 1px solid #2288ff;
+                outline: none;
+                font-weight: bold;
+                color: #2288ff;
+                font-family: sans-serif;
+                cursor: pointer;
+                z-index: 10;
+            }
+            #downloadFile:hover {
+                background: #d8efff;
+            }
+
+            .CodeMirror {
+                height: 100%;
+                line-height: 1.5;
+            }
+
+            @media all and (max-width: 500px) {
+                .container {
+                    flex-direction: column;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <iframe style="position: fixed; right: 0; top: 50px; z-index: 10" src="https://ghbtns.com/github-btn.html?user=Bogdan-Lyashenko&repo=js-code-to-svg-flowchart&type=star&count=true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+
+    <div class="container">
+        <div class="column">
+            <textarea id="codeEditor">
+ /**
+ * Binary search
+ * @param {Array} list
+ * @param {Number} element
+ * @returns {number}
+ */
+function PerformSimulation() {
+    while (iter <= maxIterions) {
+        FluidFlowSimulation(timeStep);
+        if (currentParticleCount <maxParticleCount) {
+            //Functional which injects particles with predefined probability from the specified injection domain.
+            ParticlesInjecting(timeStep)
+        }
+        // Functional that advances the particles to their new position at each predefined time step.
+        ParticlesPositionUpdating(timeStep);
+        // Functional that assigns the particle velocity according to the particle's position in the fluid.
+        ParticlesDragForceCalculating(timeStep);
+        // Compute particle->particle and gravity forces, with help of the data processor
+        ParticlesOtherForcesCalculating(timeStep);
+        // Integrate the velocity according to the Verlet algorithm.
+        ParticlesVelocityUpdate(timeStep);
+        ParticlesDepositProcessing(timeStep);
+        //Bounce Back
+        ParticlesBounceBackProcessing(timeStep);
+        // Definition of an absorbtion domain for the particles.
+        ParticlesAbsorbing(timeStep);
+    }
+}</textarea>
+        </div>
+        <button id="downloadFile">DOWNLOAD SVG FILE</button>
+        <div class="column">
+            <p id="svgImage"></p>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+
+    </body>
+</html>

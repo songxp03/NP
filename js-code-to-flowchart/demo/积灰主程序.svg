@@ -1,0 +1,207 @@
+
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="502" height="733" shape-rendering="optimizeSpeed">
+                
+            <g>
+                <rect x="50" y="80" width="245" height="30" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></rect>
+                    
+                <line x1="60" y1="80" x2="60" y2="110" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+                <line x1="285" y1="80" x2="285" y2="110" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+             
+                <title>function 积灰过程主程序()</title>
+            <text x="75" y="100" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="75" y="100">function 积灰过程主程序()</tspan>
+            </text>
+                
+            </g><g>
+
+            <rect x="117" y="163.5" width="200.4" height="30" rx="3" ry="3" style="fill:#b39ddb; stroke:#444; stroke-width:1"></rect>
+            <polygon points="87,178.5 117,148.5 147,178.5 117,208.5" style="fill:#b39ddb; stroke:#444; stroke-width:1"></polygon>
+                
+            <title>迭代步数少于设定值</title>
+            <text x="162" y="183.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="162" y="183.5">迭代步数少于设定值</tspan>
+            </text>
+            
+            <text x="97.5" y="183.5" font-family="monospace" font-size="13" fill="#222">while</text>
+        </g>
+                <g>
+                   <rect x="137" y="218.5" width="256.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>根据LBM算法计算流场(timeStep)</title>
+            <text x="152" y="238.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="238.5">根据LBM算法计算流场(timeStep)</tspan>
+            </text>
+                   
+                   
+                </g><g>
+            <rect x="167" y="282" width="309.6" height="30" rx="3" ry="3" style="fill:#ce93d8; stroke:#444; stroke-width:1"></rect>                
+            <polygon points="137,297 167,267 197,297 167,327" style="fill:#ce93d8; stroke:#444; stroke-width:1"></polygon>
+            <title>(计算域内注入粒子数量少于设定值)</title>
+            <text x="212" y="302" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="212" y="302">(计算域内注入粒子数量少于设定值)</tspan>
+            </text>
+            
+            <text x="159.2" y="302" font-family="monospace" font-size="13" fill="#222">if</text> <text x="174.8" y="328.95" font-family="monospace" font-size="13" fill="#222">+</text> 
+        </g>
+                <g>
+                   <rect x="187" y="337" width="217.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>计算域入口随机注入粒子()</title>
+            <text x="202" y="357" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="202" y="357">计算域入口随机注入粒子()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="387" width="139.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>更新粒子位置()</title>
+            <text x="152" y="407" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="407">更新粒子位置()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="435.5" width="217.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>计算粒子Drag力和布朗力()</title>
+            <text x="152" y="455.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="455.5">计算粒子Drag力和布朗力()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="484" width="154.8" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>计算粒子加速度()</title>
+            <text x="152" y="504" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="504">计算粒子加速度()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="532.5" width="248.4" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>根据Verlet算法计算粒子速度()</title>
+            <text x="152" y="552.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="552.5">根据Verlet算法计算粒子速度()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="581" width="139.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>粒子积灰处理()</title>
+            <text x="152" y="601" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="601">粒子积灰处理()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="629.5" width="248.4" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>粒子运动至周期边界处的处理()</title>
+            <text x="152" y="649.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="649.5">粒子运动至周期边界处的处理()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="137" y="678" width="201.6" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>删除从出口流出的粒子()</title>
+            <text x="152" y="698" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="152" y="698">删除从出口流出的粒子()</tspan>
+            </text>
+                   
+                   
+                </g>
+            <g>
+               <rect x="25" y="13.75" width="216.6" height="24" style="fill:#fff59d; stroke:#444; stroke-width:1"></rect>
+               <circle cx="25" cy="25" r="15" style="fill:#fff59d; stroke:#444; stroke-width:1"></circle>
+               <title>Program: source module</title>
+            <text x="55" y="30" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="55" y="30">Program: source module</tspan>
+            </text>
+            </g>
+            <g>
+               <path d="M25, 40 L25 91 Q25 95
+                29 95
+                L42 95 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M42, 92 L50, 95 L42, 98 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 174.5 Q68.5 178.5
+                72.5 178.5
+                L79 178.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M79, 175.5 L87, 178.5 L79, 181.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 229.5 Q117 233.5
+                121 233.5
+                L129 233.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 230.5 L137, 233.5 L129, 236.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 293 Q117 297
+                121 297
+                L129 297 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 294 L137, 297 L129, 300 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M167, 327 L167 348 Q167 352
+                171 352
+                L179 352 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M179, 349 L187, 352 L179, 355 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 398 Q117 402
+                121 402
+                L129 402 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 399 L137, 402 L129, 405 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 446.5 Q117 450.5
+                121 450.5
+                L129 450.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 447.5 L137, 450.5 L129, 453.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 495 Q117 499
+                121 499
+                L129 499 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 496 L137, 499 L129, 502 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 543.5 Q117 547.5
+                121 547.5
+                L129 547.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 544.5 L137, 547.5 L129, 550.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 592 Q117 596
+                121 596
+                L129 596 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 593 L137, 596 L129, 599 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 640.5 Q117 644.5
+                121 644.5
+                L129 644.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 641.5 L137, 644.5 L129, 647.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M117, 208.5 L117 689 Q117 693
+                121 693
+                L129 693 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M129, 690 L137, 693 L129, 696 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M338.6, 693 L492.6 693  Q496.6 693
+                496.6 689
+                L496.6 136.5 Q496.6 128.5
+                492.6 128.5
+                L125 128.5  Q117 128.5
+                117 132.5
+                L117 140.5" style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M114, 140.5 L117, 148.5 L120, 140.5 Z" fill="#333"></path>
+            </g>
+            </svg>
